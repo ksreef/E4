@@ -5,6 +5,7 @@ import { play } from "../sounds.ts";
 import { TINTS } from "../textures.ts";
 import { Backdrop } from "./backdrop.ts";
 import { fadeTo } from "./boot.ts";
+import type { RunStats } from "./play.ts";
 
 const STORY: [number, string][] = [
   [0.8, "The Warden's lights go dark, one ring at a time."],
@@ -16,7 +17,7 @@ const CREDITS_AT = 11;
 const RETURN_AT = 18;
 
 interface CutsceneData {
-  run: { score: number; kills: number; hits: number; continues: number };
+  run: RunStats;
   afterDemo: boolean;
 }
 
