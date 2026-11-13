@@ -13,7 +13,6 @@ import type { LaunchOptions } from "./main.ts";
 import { AutoPilot, KeyboardPilot, type Pilot } from "./pilots.ts";
 import { Rng } from "./rng.ts";
 import {
-  ENEMY_STATS,
   type EnemyKind,
   SECTOR_GRACE_TICKS,
   SECTORS,
@@ -328,23 +327,7 @@ export class GameScene extends Phaser.Scene implements Arena {
   }
 
   private spawn(kind: EnemyKind, x: number, y: number, side: number): void {
-    const stats = ENEMY_STATS[kind];
-    this.enemies.push(
-      new ShmupPrefabSprite(
-        this,
-        x,
-        y,
-        kind,
-        stats.hp,
-        stats.score,
-        stats.radius,
-        stats.dropChance,
-        stats.canShoot,
-        false,
-        x,
-        side,
-      ),
-    );
+    this.enemies.push(new ShmupPrefabSprite(this, kind, x, y, side));
   }
 
   // one tick of gameplay
